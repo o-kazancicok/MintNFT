@@ -30,11 +30,7 @@ Allow users to enter the NFT name, choose the NFT file to upload (this should be
 When the user submits the NFT minting form, trigger a transaction to mint the NFT using the smart contract.
 Include the logic in the smart contract to handle royalty fees and transfer the appropriate percentage to the treasury and liquidity wallets.
 
-# Step 6: Storing Metadata (Optional):
-
-If you want to include metadata for the NFT (e.g., description, image URL, etc.), you can persist it in an off-chain database or file system. Link this metadata to the NFT token ID in the smart contract.
-
-# Step 7: Tokenomics and Wallets:
+# Step 6: Tokenomics and Wallets:
 
 Set up two wallets on the blockchain: liquidity wallet and treasury wallet.
 When a user mints an NFT and sets a price, apply a 10% royalty fee to the price.
