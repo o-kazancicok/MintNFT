@@ -5,17 +5,17 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFT is ERC721Enumerable, Ownable {
-    uint256 public nextTokenId = 1;
-    address public liquidityWallet;
-    address public treasuryWallet;
-    uint256 public royaltyFeePercentage = 10;
+    uint256 private nextTokenId = 1;
+    address private liquidityWallet;
+    address private treasuryWallet;
+    uint256 private royaltyFeePercentage = 10;
 
     struct NFTMetadata {
         string name;
         string tokenURI;
     }
 
-    mapping(uint256 => NFTMetadata) public nftMetadata;
+    mapping(uint256 => NFTMetadata) private nftMetadata;
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
 
@@ -41,5 +41,9 @@ contract NFT is ERC721Enumerable, Ownable {
     function setWallets(address _liquidityWallet, address _treasuryWallet) external onlyOwner {
         liquidityWallet = _liquidityWallet;
         treasuryWallet = _treasuryWallet;
+    }
+
+    function getNFTMetadata(uint256 tokenId) external view returns (NFTMetadata memory) {
+        return nftMetadata[tokenId];
     }
 }
